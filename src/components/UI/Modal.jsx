@@ -18,6 +18,12 @@ const ModalOverlay = (props) => {
 const portalElement = document.getElementById('overlays');
 
 const Modal = (props) => {
+  console.log('Portal element:', portalElement);
+
+  if (!portalElement) {
+    return <div>Modal failed to mount. No #overlays found.</div>;
+  }
+
   return (
     <Fragment>
       {ReactDOM.createPortal(<Backdrop onClose={props.onClose} />, portalElement)}
